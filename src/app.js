@@ -1,4 +1,12 @@
+/*
+Challenge 1
+*/
+
 const doorToDoor = (volunteers, neighbourhoods) => neighbourhoods.length / volunteers.length;
+
+/*
+Challenge 2
+*/
 
 const interviewAnswer = (topic) => {
   const answers = {
@@ -10,4 +18,19 @@ const interviewAnswer = (topic) => {
   return answers[topic] || 'QUACK!';
 };
 
-module.exports = { doorToDoor, interviewAnswer };
+/*
+Challenge 3
+*/
+
+const castVote = (name, votes) => {
+  const namesIndexes = {
+    Tim: 0,
+    Sally: 1,
+    Beth: 2,
+  };
+
+  return votes.map((voteCount, index) =>
+    (index === namesIndexes[name] ? voteCount + 1 : voteCount));
+};
+
+module.exports = { doorToDoor, interviewAnswer, castVote };
