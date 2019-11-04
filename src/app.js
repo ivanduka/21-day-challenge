@@ -2,20 +2,21 @@
 Challenge 1
 */
 
-const doorToDoor = (volunteers, neighbourhoods) => neighbourhoods.length / volunteers.length;
+const doorToDoor = (volunteers, neighbourhoods) =>
+  neighbourhoods.length / volunteers.length;
 
 /*
 Challenge 2
 */
 
-const interviewAnswer = (topic) => {
+const interviewAnswer = topic => {
   const answers = {
-    'arts funding': "We'll have to get creative!",
-    'economy': 'Time is money.',
-    'transportation': "It's going to be a long road, so we better get moving.",
+    "arts funding": "We'll have to get creative!",
+    economy: "Time is money.",
+    transportation: "It's going to be a long road, so we better get moving."
   };
 
-  return answers[topic] || 'QUACK!';
+  return answers[topic] || "QUACK!";
 };
 
 /*
@@ -26,11 +27,24 @@ const castVote = (name, votes) => {
   const namesIndexes = {
     Tim: 0,
     Sally: 1,
-    Beth: 2,
+    Beth: 2
   };
 
   return votes.map((voteCount, index) =>
-    (index === namesIndexes[name] ? voteCount + 1 : voteCount));
+    index === namesIndexes[name] ? voteCount + 1 : voteCount
+  );
 };
 
-module.exports = { doorToDoor, interviewAnswer, castVote };
+/*
+Challenge 4
+*/
+
+const registerToVote = (name, unregisteredVoters) =>
+  unregisteredVoters.filter(voter => voter !== name);
+
+module.exports = {
+  doorToDoor,
+  interviewAnswer,
+  castVote,
+  registerToVote
+};
