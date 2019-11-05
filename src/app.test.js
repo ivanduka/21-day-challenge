@@ -107,3 +107,23 @@ describe("Challenge 04", () => {
     expect(actual).toEqual(expected);
   });
 });
+
+const { chooseStations } = require("./app");
+
+describe("Challenge 05", () => {
+  it("Example", () => {
+    const stations = [
+      ["Big Bear Donair", 10, "restaurant"],
+      ["Bright Lights Elementary", 50, "school"],
+      ["Moose Mountain Community Centre", 45, "community centre"]
+    ];
+
+    const actual = chooseStations(stations);
+    const expected = [
+      "Bright Lights Elementary",
+      "Moose Mountain Community Centre"
+    ];
+
+    expect(actual).toEqual(expected);
+  });
+});

@@ -42,9 +42,23 @@ Challenge 4
 const registerToVote = (name, unregisteredVoters) =>
   unregisteredVoters.filter(voter => voter !== name);
 
+/*
+Challenge 5
+*/
+
+const chooseStations = stations =>
+  stations.reduce(
+    (appropriate, [name, capacity, type]) =>
+      capacity >= 20 && (type == "community centre" || type == "school")
+        ? appropriate.concat(name)
+        : appropriate,
+    []
+  );
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
   castVote,
-  registerToVote
+  registerToVote,
+  chooseStations
 };
