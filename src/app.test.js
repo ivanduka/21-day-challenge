@@ -127,3 +127,75 @@ describe("Challenge 05", () => {
     expect(actual).toEqual(expected);
   });
 });
+
+const { voterTurnout } = require("./app");
+
+describe("Challenge 06", () => {
+  it("example 1", () => {
+    const voter_signatures = [
+      "Bill Billiamson",
+      "Kate Etak",
+      "Brandon Brandonus",
+      "Fake McFakerson",
+      "Jane Janesford"
+    ];
+
+    const voter_ids = [
+      "Bill Billiamson",
+      "Kate Etak",
+      "Brandon Brandonus",
+      "Simon Simonson",
+      "Jane Janesford"
+    ];
+
+    const actual = voterTurnout(voter_signatures, voter_ids);
+    const expected = "FRAUD!";
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("example 2", () => {
+    const voter_signatures = [
+      "Bill Billiamson",
+      "Kate Etak",
+      "Brandon Brandonus",
+      "Simon Simonson",
+      "Jane Janesford"
+    ];
+
+    const voter_ids = [
+      "Bill Billiamson",
+      "Kate Etak",
+      "Brandon Brandonus",
+      "Simon Simonson",
+      "Jane Janesford"
+    ];
+
+    const actual = voterTurnout(voter_signatures, voter_ids);
+    const expected = "All clear, we can count the votes!";
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("example 3", () => {
+    const voter_signatures = [
+      "Bill Billiamson",
+      "Brandon Brandonus",
+      "Simon Simonson",
+      "Jane Janesford"
+    ];
+
+    const voter_ids = [
+      "Bill Billiamson",
+      "Kate Etak",
+      "Brandon Brandonus",
+      "Simon Simonson",
+      "Jane Janesford"
+    ];
+
+    const actual = voterTurnout(voter_signatures, voter_ids);
+    const expected = false;
+
+    expect(actual).toEqual(expected);
+  });
+});
