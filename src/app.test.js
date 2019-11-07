@@ -1,4 +1,12 @@
-const { doorToDoor } = require("./app");
+const {
+  doorToDoor,
+  interviewAnswer,
+  castVote,
+  registerToVote,
+  chooseStations,
+  voterTurnout,
+  termTopics
+} = require("./app");
 
 describe("Challenge 01", () => {
   it("works", () => {
@@ -21,8 +29,6 @@ describe("Challenge 01", () => {
     expect(actual).toEqual(expected);
   });
 });
-
-const { interviewAnswer } = require("./app");
 
 describe("Challenge 02", () => {
   it("arts funding", () => {
@@ -53,8 +59,6 @@ describe("Challenge 02", () => {
     expect(actual).toEqual(expected);
   });
 });
-
-const { castVote } = require("./app");
 
 describe("Challenge 03", () => {
   it("Example 1", () => {
@@ -94,8 +98,6 @@ describe("Challenge 03", () => {
   });
 });
 
-const { registerToVote } = require("./app");
-
 describe("Challenge 04", () => {
   it("Example", () => {
     const name = "Bradley";
@@ -107,8 +109,6 @@ describe("Challenge 04", () => {
     expect(actual).toEqual(expected);
   });
 });
-
-const { chooseStations } = require("./app");
 
 describe("Challenge 05", () => {
   it("Example", () => {
@@ -127,8 +127,6 @@ describe("Challenge 05", () => {
     expect(actual).toEqual(expected);
   });
 });
-
-const { voterTurnout } = require("./app");
 
 describe("Challenge 06", () => {
   it("example 1", () => {
@@ -195,6 +193,34 @@ describe("Challenge 06", () => {
 
     const actual = voterTurnout(voter_signatures, voter_ids);
     const expected = false;
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 07", () => {
+  it("example 1", () => {
+    const interviews = [
+      "smart city",
+      "rebuild the lighthouse",
+      "arts funding",
+      "transportation",
+      "arts funding",
+      "rebuild the lighthouse",
+      "sports funding",
+      "tax cuts",
+      "smart city",
+      "arts funding",
+      "smart city"
+    ];
+
+    const actual = termTopics(interviews);
+
+    const expected = [
+      3, // smart city
+      3, // arts funding
+      1 // transportation
+    ];
 
     expect(actual).toEqual(expected);
   });

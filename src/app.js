@@ -69,11 +69,26 @@ const voterTurnout = (voter_signatures, voter_ids) => {
   return "All clear, we can count the votes!";
 };
 
+const termTopics = interviews => {
+  const topics = ["smart city", "arts funding", "transportation"];
+
+  const results = interviews.reduce(
+    (result, interview) =>
+      result[interview]
+        ? { ...result, [interview]: result[interview] + 1 }
+        : { ...result, [interview]: 1 },
+    {}
+  );
+
+  return topics.map(topic => results[topic] || 0);
+};
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
   castVote,
   registerToVote,
   chooseStations,
-  voterTurnout
+  voterTurnout,
+  termTopics
 };
