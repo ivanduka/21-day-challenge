@@ -5,7 +5,8 @@ const {
   registerToVote,
   chooseStations,
   voterTurnout,
-  termTopics
+  termTopics,
+  smartGarbage
 } = require("./app");
 
 describe("Challenge 01", () => {
@@ -221,6 +222,27 @@ describe("Challenge 07", () => {
       3, // arts funding
       1 // transportation
     ];
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 08", () => {
+  it("works", () => {
+    const bins = {
+      waste: 4,
+      recycling: 2,
+      compost: 5
+    };
+
+    const trash = "recycling";
+
+    const actual = smartGarbage(trash, bins);
+    const expected = {
+      waste: 4,
+      recycling: 3,
+      compost: 5
+    };
 
     expect(actual).toEqual(expected);
   });

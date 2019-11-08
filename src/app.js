@@ -83,6 +83,8 @@ const termTopics = interviews => {
   return topics.map(topic => results[topic] || 0);
 };
 
+const smartGarbage = (trash, bins) => ({ ...bins, [trash]: bins[trash] + 1 });
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
@@ -90,5 +92,6 @@ module.exports = {
   registerToVote,
   chooseStations,
   voterTurnout,
-  termTopics
+  termTopics,
+  smartGarbage
 };
