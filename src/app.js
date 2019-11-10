@@ -85,6 +85,24 @@ const termTopics = interviews => {
 
 const smartGarbage = (trash, bins) => ({ ...bins, [trash]: bins[trash] + 1 });
 
+const carPassing = (cars, speed) => [...cars, { time: Date.now(), speed }];
+
+const whereCanIPark = (spots, vehicle) => {
+  const config = {
+    regular: ["R"],
+    small: ["R", "S"],
+    motorcycle: ["R", "S", "M"]
+  };
+
+  for (let row = 0; row < spots.length; row += 1) {
+    for (let col = 0; col < spots[row].length; col += 1) {
+      if (config[vehicle].includes(spots[row][col])) return [col, row];
+    }
+  }
+
+  return false;
+};
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
@@ -93,5 +111,7 @@ module.exports = {
   chooseStations,
   voterTurnout,
   termTopics,
-  smartGarbage
+  smartGarbage,
+  carPassing,
+  whereCanIPark
 };

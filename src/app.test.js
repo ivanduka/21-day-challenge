@@ -6,7 +6,9 @@ const {
   chooseStations,
   voterTurnout,
   termTopics,
-  smartGarbage
+  smartGarbage,
+  carPassing,
+  whereCanIPark
 } = require("./app");
 
 describe("Challenge 01", () => {
@@ -243,6 +245,71 @@ describe("Challenge 08", () => {
       recycling: 3,
       compost: 5
     };
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 09", () => {
+  it("example 1", () => {
+    const cars = [
+      {
+        time: 1568329654807,
+        speed: 40
+      },
+      {
+        time: 1568329821632,
+        speed: 42
+      },
+      {
+        time: 1568331115463,
+        speed: 35
+      }
+    ];
+
+    const speed = 38;
+
+    const actual = carPassing(cars, speed);
+    const expected = [
+      {
+        time: 1568329654807,
+        speed: 40
+      },
+      {
+        time: 1568329821632,
+        speed: 42
+      },
+      {
+        time: 1568331115463,
+        speed: 35
+      },
+      {
+        time: expect.any(Number),
+        speed: 38
+      }
+    ];
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 10", () => {
+  it("example 1", () => {
+    const spots = [
+      // COLUMNS ARE X
+      //    0    1    2    3    4    5
+      ["s", "s", "s", "S", "R", "M"], // 0 ROWS ARE Y
+      ["s", "M", "s", "S", "R", "M"], // 1
+      ["s", "M", "s", "S", "R", "m"], // 2
+      ["S", "r", "s", "m", "R", "M"], // 3
+      ["S", "r", "s", "m", "R", "M"], // 4
+      ["S", "r", "S", "M", "M", "S"] // 5
+    ];
+
+    const vehicle = "regular"; // possible options are 'regular', 'small', or 'motorcycle'
+
+    const actual = whereCanIPark(spots, vehicle);
+    const expected = [4, 0];
 
     expect(actual).toEqual(expected);
   });
