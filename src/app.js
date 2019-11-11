@@ -103,6 +103,15 @@ const whereCanIPark = (spots, vehicle) => {
   return false;
 };
 
+const busTimes = buses =>
+  Object.entries(buses).reduce(
+    (returnObject, [busStopName, { distance, speed }]) => ({
+      ...returnObject,
+      [busStopName]: distance / speed
+    }),
+    {}
+  );
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
@@ -113,5 +122,6 @@ module.exports = {
   termTopics,
   smartGarbage,
   carPassing,
-  whereCanIPark
+  whereCanIPark,
+  busTimes
 };

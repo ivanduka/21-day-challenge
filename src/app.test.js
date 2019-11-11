@@ -8,7 +8,8 @@ const {
   termTopics,
   smartGarbage,
   carPassing,
-  whereCanIPark
+  whereCanIPark,
+  busTimes
 } = require("./app");
 
 describe("Challenge 01", () => {
@@ -310,6 +311,29 @@ describe("Challenge 10", () => {
 
     const actual = whereCanIPark(spots, vehicle);
     const expected = [4, 0];
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 11", () => {
+  it("example 1", () => {
+    const buses = {
+      pickadilly: {
+        distance: 10,
+        speed: 5
+      },
+      uptown: {
+        distance: 13,
+        speed: 10
+      }
+    };
+
+    const actual = busTimes(buses);
+    const expected = {
+      pickadilly: 2,
+      uptown: 1.3
+    };
 
     expect(actual).toEqual(expected);
   });
