@@ -112,6 +112,12 @@ const busTimes = buses =>
     {}
   );
 
+const checkAir = (samples, threshold) =>
+  samples.filter(sample => sample === "dirty").length / samples.length <
+  threshold
+    ? "Clean"
+    : "Polluted";
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
@@ -123,5 +129,6 @@ module.exports = {
   smartGarbage,
   carPassing,
   whereCanIPark,
-  busTimes
+  busTimes,
+  checkAir
 };

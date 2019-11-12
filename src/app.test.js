@@ -9,7 +9,8 @@ const {
   smartGarbage,
   carPassing,
   whereCanIPark,
-  busTimes
+  busTimes,
+  checkAir
 } = require("./app");
 
 describe("Challenge 01", () => {
@@ -334,6 +335,50 @@ describe("Challenge 11", () => {
       pickadilly: 2,
       uptown: 1.3
     };
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 12", () => {
+  it("example 1", () => {
+    const samples = [
+      "clean",
+      "clean",
+      "dirty",
+      "clean",
+      "dirty",
+      "clean",
+      "clean",
+      "dirty",
+      "clean",
+      "dirty"
+    ];
+    const threshold = 0.3;
+
+    const actual = checkAir(samples, threshold);
+    const expected = "Polluted";
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("example 2", () => {
+    const samples = [
+      "clean",
+      "clean",
+      "dirty",
+      "clean",
+      "clean",
+      "clean",
+      "clean",
+      "clean",
+      "clean",
+      "dirty"
+    ];
+    const threshold = 0.5;
+
+    const actual = checkAir(samples, threshold);
+    const expected = "Clean";
 
     expect(actual).toEqual(expected);
   });
