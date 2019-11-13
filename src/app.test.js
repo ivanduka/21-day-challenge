@@ -10,7 +10,10 @@ const {
   carPassing,
   whereCanIPark,
   busTimes,
-  checkAir
+  checkAir,
+  lightsOn,
+  lightsOff,
+  toggleLights
 } = require("./app");
 
 describe("Challenge 01", () => {
@@ -379,6 +382,163 @@ describe("Challenge 12", () => {
 
     const actual = checkAir(samples, threshold);
     const expected = "Clean";
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 13", () => {
+  it("lightsOff", () => {
+    const lights = [
+      {
+        id: 1,
+        on: true
+      },
+      {
+        id: 2,
+        on: true
+      },
+      {
+        id: 3,
+        on: true
+      },
+      {
+        id: 4,
+        on: true
+      },
+      {
+        id: 5,
+        on: true
+      }
+    ];
+
+    const actual = lightsOff(lights);
+    const expected = [
+      {
+        id: 1,
+        on: false
+      },
+      {
+        id: 2,
+        on: false
+      },
+      {
+        id: 3,
+        on: false
+      },
+      {
+        id: 4,
+        on: false
+      },
+      {
+        id: 5,
+        on: false
+      }
+    ];
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("lightsOn", () => {
+    const lights = [
+      {
+        id: 1,
+        on: false
+      },
+      {
+        id: 2,
+        on: false
+      },
+      {
+        id: 3,
+        on: false
+      },
+      {
+        id: 4,
+        on: false
+      },
+      {
+        id: 5,
+        on: false
+      }
+    ];
+
+    const actual = lightsOn(lights);
+    const expected = [
+      {
+        id: 1,
+        on: true
+      },
+      {
+        id: 2,
+        on: true
+      },
+      {
+        id: 3,
+        on: true
+      },
+      {
+        id: 4,
+        on: true
+      },
+      {
+        id: 5,
+        on: true
+      }
+    ];
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("toggleLights", () => {
+    const lights = [
+      {
+        id: 1,
+        on: true
+      },
+      {
+        id: 2,
+        on: true
+      },
+      {
+        id: 3,
+        on: true
+      },
+      {
+        id: 4,
+        on: true
+      },
+      {
+        id: 5,
+        on: true
+      }
+    ];
+
+    const lightsAreOn = true;
+
+    const actual = toggleLights(lights, lightsAreOn);
+    const expected = [
+      {
+        id: 1,
+        on: false
+      },
+      {
+        id: 2,
+        on: false
+      },
+      {
+        id: 3,
+        on: false
+      },
+      {
+        id: 4,
+        on: false
+      },
+      {
+        id: 5,
+        on: false
+      }
+    ];
 
     expect(actual).toEqual(expected);
   });

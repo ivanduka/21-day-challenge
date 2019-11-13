@@ -118,6 +118,15 @@ const checkAir = (samples, threshold) =>
     ? "Clean"
     : "Polluted";
 
+// Tip: Work on one of these functions at a time.
+
+const lightsOn = lights => lights.map(({ id }) => ({ id, on: true }));
+
+const lightsOff = lights => lights.map(({ id }) => ({ id, on: false }));
+
+const toggleLights = (lights, lightsAreOn) =>
+  lightsAreOn ? lightsOff(lights) : lightsOn(lights);
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
@@ -130,5 +139,8 @@ module.exports = {
   carPassing,
   whereCanIPark,
   busTimes,
-  checkAir
+  checkAir,
+  lightsOn,
+  lightsOff,
+  toggleLights
 };
