@@ -13,7 +13,8 @@ const {
   checkAir,
   lightsOn,
   lightsOff,
-  toggleLights
+  toggleLights,
+  dynamicPricing
 } = require("./app");
 
 describe("Challenge 01", () => {
@@ -539,6 +540,28 @@ describe("Challenge 13", () => {
         on: false
       }
     ];
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 14", () => {
+  it("example 1", () => {
+    const numberOfPeople = 15;
+    const distanceTraveled = 10;
+
+    const actual = dynamicPricing(numberOfPeople, distanceTraveled);
+    const expected = "$3.50";
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("example 2", () => {
+    const numberOfPeople = 35;
+    const distanceTraveled = 5;
+
+    const actual = dynamicPricing(numberOfPeople, distanceTraveled);
+    const expected = "$2.50";
 
     expect(actual).toEqual(expected);
   });

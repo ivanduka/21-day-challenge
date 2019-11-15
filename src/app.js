@@ -118,14 +118,26 @@ const checkAir = (samples, threshold) =>
     ? "Clean"
     : "Polluted";
 
-// Tip: Work on one of these functions at a time.
-
 const lightsOn = lights => lights.map(({ id }) => ({ id, on: true }));
 
 const lightsOff = lights => lights.map(({ id }) => ({ id, on: false }));
 
 const toggleLights = (lights, lightsAreOn) =>
   lightsAreOn ? lightsOff(lights) : lightsOn(lights);
+
+const dynamicPricing = (numberOfPeople, distanceTraveled) => {
+  const basePrice = 1;
+  const chargePerKm = 0.25;
+  const threshold = 30;
+  const thresholdAddition = 0.25;
+
+  const totalPrice =
+    basePrice +
+    chargePerKm * distanceTraveled +
+    (numberOfPeople >= threshold ? thresholdAddition : 0);
+
+  return "$" + totalPrice.toFixed(2);
+};
 
 module.exports = {
   doorToDoor,
@@ -142,5 +154,6 @@ module.exports = {
   checkAir,
   lightsOn,
   lightsOff,
-  toggleLights
+  toggleLights,
+  dynamicPricing
 };
