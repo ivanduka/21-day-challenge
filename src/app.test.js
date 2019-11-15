@@ -14,7 +14,8 @@ const {
   lightsOn,
   lightsOff,
   toggleLights,
-  dynamicPricing
+  dynamicPricing,
+  finalPosition
 } = require("./app");
 
 describe("Challenge 01", () => {
@@ -562,6 +563,17 @@ describe("Challenge 14", () => {
 
     const actual = dynamicPricing(numberOfPeople, distanceTraveled);
     const expected = "$2.50";
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 15", () => {
+  it("example 1", () => {
+    const moves = ["north", "north", "west", "west", "north", "east", "north"];
+
+    const actual = finalPosition(moves);
+    const expected = [-1, 4];
 
     expect(actual).toEqual(expected);
   });

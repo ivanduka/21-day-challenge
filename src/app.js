@@ -139,6 +139,23 @@ const dynamicPricing = (numberOfPeople, distanceTraveled) => {
   return "$" + totalPrice.toFixed(2);
 };
 
+const finalPosition = moves => {
+  const directions = {
+    north: { xChange: 0, yChange: +1 },
+    south: { xChange: 0, yChange: -1 },
+    west: { xChange: -1, yChange: 0 },
+    east: { xChange: +1, yChange: 0 }
+  };
+
+  return moves.reduce(
+    ([oldX, oldY], move) => [
+      oldX + directions[move].xChange,
+      oldY + directions[move].yChange
+    ],
+    [0, 0]
+  );
+};
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
@@ -155,5 +172,6 @@ module.exports = {
   lightsOn,
   lightsOff,
   toggleLights,
-  dynamicPricing
+  dynamicPricing,
+  finalPosition
 };
