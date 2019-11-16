@@ -156,6 +156,11 @@ const finalPosition = moves => {
   );
 };
 
+const festivalColours = color1 => {
+  const normalize = color => (color <= 360 ? color : color - 360);
+  return [normalize(color1 + 150), normalize(color1 + 210)];
+};
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
@@ -173,5 +178,6 @@ module.exports = {
   lightsOff,
   toggleLights,
   dynamicPricing,
-  finalPosition
+  finalPosition,
+  festivalColours
 };

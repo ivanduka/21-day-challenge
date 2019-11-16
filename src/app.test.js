@@ -15,7 +15,8 @@ const {
   lightsOff,
   toggleLights,
   dynamicPricing,
-  finalPosition
+  finalPosition,
+  festivalColours
 } = require("./app");
 
 describe("Challenge 01", () => {
@@ -574,6 +575,24 @@ describe("Challenge 15", () => {
 
     const actual = finalPosition(moves);
     const expected = [-1, 4];
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 16", () => {
+  it("example 1", () => {
+    const color1 = 100;
+    const actual = festivalColours(color1);
+    const expected = [250, 310];
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("example 2", () => {
+    const color1 = 300;
+    const actual = festivalColours(color1);
+    const expected = [90, 150];
 
     expect(actual).toEqual(expected);
   });
