@@ -16,7 +16,8 @@ const {
   toggleLights,
   dynamicPricing,
   finalPosition,
-  festivalColours
+  festivalColours,
+  judgeVegetable
 } = require("./app");
 
 describe("Challenge 01", () => {
@@ -593,6 +594,35 @@ describe("Challenge 16", () => {
     const color1 = 300;
     const actual = festivalColours(color1);
     const expected = [90, 150];
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 17", () => {
+  it("example 1", () => {
+    const vegetables = [
+      {
+        submitter: "Old Man Franklin",
+        redness: 10,
+        plumpness: 5
+      },
+      {
+        submitter: "Sally Tomato-Grower",
+        redness: 2,
+        plumpness: 8
+      },
+      {
+        submitter: "Hamid Hamidson",
+        redness: 4,
+        plumpness: 3
+      }
+    ];
+
+    const metric = "redness";
+
+    const actual = judgeVegetable(vegetables, metric);
+    const expected = "Old Man Franklin";
 
     expect(actual).toEqual(expected);
   });

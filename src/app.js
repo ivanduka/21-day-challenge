@@ -161,6 +161,11 @@ const festivalColours = color1 => {
   return [normalize(color1 + 150), normalize(color1 + 210)];
 };
 
+const judgeVegetable = (vegetables, metric) =>
+  vegetables.reduce((winner, contestant) =>
+    contestant[metric] > winner[metric] ? contestant : winner
+  ).submitter;
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
@@ -179,5 +184,6 @@ module.exports = {
   toggleLights,
   dynamicPricing,
   finalPosition,
-  festivalColours
+  festivalColours,
+  judgeVegetable
 };
