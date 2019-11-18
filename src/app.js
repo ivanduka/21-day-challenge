@@ -166,6 +166,26 @@ const judgeVegetable = (vegetables, metric) =>
     contestant[metric] > winner[metric] ? contestant : winner
   ).submitter;
 
+const countTickets = tickets =>
+  tickets.reduce(
+    (countObject, ticket) => ({
+      ...countObject,
+      [ticket]: countObject[ticket] + 1
+    }),
+    { red: 0, green: 0, blue: 0 }
+  );
+
+const bestOdds = (tickets, raffleEntries) => {
+  const bestChanceColor = Object.entries(countTickets(tickets))
+    .map(([color, count]) => [color, count / raffleEntries[color]])
+    .reduce(([winnerColor, winnerChances], [nextColor, nextChances]) =>
+      nextChances > winnerChances
+        ? [nextColor, nextChances]
+        : [winnerColor, winnerChances]
+    )[0];
+  return `You have the best odds of winning the ${bestChanceColor} raffle.`;
+};
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
@@ -185,5 +205,7 @@ module.exports = {
   dynamicPricing,
   finalPosition,
   festivalColours,
-  judgeVegetable
+  judgeVegetable,
+  countTickets,
+  bestOdds
 };

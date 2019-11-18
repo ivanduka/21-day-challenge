@@ -17,7 +17,9 @@ const {
   dynamicPricing,
   finalPosition,
   festivalColours,
-  judgeVegetable
+  judgeVegetable,
+  countTickets,
+  bestOdds
 } = require("./app");
 
 describe("Challenge 01", () => {
@@ -623,6 +625,64 @@ describe("Challenge 17", () => {
 
     const actual = judgeVegetable(vegetables, metric);
     const expected = "Old Man Franklin";
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 18", () => {
+  it("example bestOdds 1", () => {
+    const tickets = ["red", "red", "green", "blue", "green"];
+
+    const raffleEntries = {
+      red: 10,
+      green: 30,
+      blue: 15
+    };
+
+    const actual = bestOdds(tickets, raffleEntries);
+    const expected = "You have the best odds of winning the red raffle.";
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("example bestOdds 2", () => {
+    const tickets = ["green", "green", "green", "blue", "green"];
+
+    const raffleEntries = {
+      red: 10,
+      green: 4,
+      blue: 15
+    };
+
+    const actual = bestOdds(tickets, raffleEntries);
+    const expected = "You have the best odds of winning the green raffle.";
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("example countVotes 1", () => {
+    const tickets = ["red", "red", "green", "blue", "green"];
+
+    const actual = countTickets(tickets);
+    const expected = {
+      red: 2,
+      green: 2,
+      blue: 1
+    };
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("example countVotes 2", () => {
+    const tickets = ["red", "red", "green", "green", "green"];
+
+    const actual = countTickets(tickets);
+    const expected = {
+      red: 2,
+      green: 3,
+      blue: 0
+    };
 
     expect(actual).toEqual(expected);
   });
