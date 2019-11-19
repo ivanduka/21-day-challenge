@@ -186,6 +186,26 @@ const bestOdds = (tickets, raffleEntries) => {
   return `You have the best odds of winning the ${bestChanceColor} raffle.`;
 };
 
+const pumpkinSpice = money => {
+  const piePrice = 5;
+  const lattePrice = 3;
+  const macaronsPrice = 1;
+
+  const pieGrams = 30;
+  const latteGrams = 15;
+  const makaronGrams = 3;
+
+  const pies = Math.floor(money / piePrice);
+  const lattes = Math.floor((money - pies * piePrice) / lattePrice);
+  const macarons = Math.floor(
+    (money - pies * piePrice - lattes * lattePrice) / macaronsPrice
+  );
+
+  const spice = pies * pieGrams + lattes * latteGrams + macarons * makaronGrams;
+
+  return [pies, lattes, macarons, spice];
+};
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
@@ -207,5 +227,6 @@ module.exports = {
   festivalColours,
   judgeVegetable,
   countTickets,
-  bestOdds
+  bestOdds,
+  pumpkinSpice
 };

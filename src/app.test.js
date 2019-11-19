@@ -19,7 +19,8 @@ const {
   festivalColours,
   judgeVegetable,
   countTickets,
-  bestOdds
+  bestOdds,
+  pumpkinSpice
 } = require("./app");
 
 describe("Challenge 01", () => {
@@ -683,6 +684,16 @@ describe("Challenge 18", () => {
       green: 3,
       blue: 0
     };
+
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 19", () => {
+  it("example 1", () => {
+    const money = 9;
+    const actual = pumpkinSpice(money);
+    const expected = [1, 1, 1, 48];
 
     expect(actual).toEqual(expected);
   });
