@@ -206,6 +206,24 @@ const pumpkinSpice = money => {
   return [pies, lattes, macarons, spice];
 };
 
+const PI = 3.14159;
+
+const sphereVolume = radius => (PI * radius ** 3 * 4) / 3;
+
+const coneVolume = (radius, height) => (PI * radius ** 2 * height) / 3;
+
+const prismVolume = (height, width, depth) => width * height * depth;
+
+const totalVolume = solids =>
+  solids
+    .map(solid => {
+      if (solid.type == "sphere") return sphereVolume(solid.radius);
+      if (solid.type == "cone") return coneVolume(solid.radius, solid.height);
+      if (solid.type == "prism")
+        return prismVolume(solid.height, solid.width, solid.depth);
+    })
+    .reduce((a, b) => a + b, 0);
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
@@ -228,5 +246,9 @@ module.exports = {
   judgeVegetable,
   countTickets,
   bestOdds,
-  pumpkinSpice
+  pumpkinSpice,
+  sphereVolume,
+  coneVolume,
+  prismVolume,
+  totalVolume
 };

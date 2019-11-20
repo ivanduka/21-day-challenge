@@ -20,7 +20,11 @@ const {
   judgeVegetable,
   countTickets,
   bestOdds,
-  pumpkinSpice
+  pumpkinSpice,
+  sphereVolume,
+  coneVolume,
+  prismVolume,
+  totalVolume
 } = require("./app");
 
 describe("Challenge 01", () => {
@@ -695,6 +699,87 @@ describe("Challenge 19", () => {
     const actual = pumpkinSpice(money);
     const expected = [1, 1, 1, 48];
 
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 20", () => {
+  it("example 1", () => {
+    const sphere = {
+      type: "sphere",
+      radius: 2
+    };
+    const actual = sphereVolume(sphere.radius);
+    const expected = 33.51029333333333;
+
+    expect(actual).toEqual(expected);
+  });
+
+  it("example 2", () => {
+    const cone = {
+      type: "cone",
+      radius: 3,
+      height: 5
+    };
+    const actual = coneVolume(cone.radius, cone.height);
+    const expected = 47.123850000000004;
+    expect(actual).toEqual(expected);
+  });
+
+  it("example 3", () => {
+    const prism = {
+      type: "prism",
+      height: 3,
+      width: 4,
+      depth: 5
+    };
+    const actual = prismVolume(prism.height, prism.width, prism.depth);
+    const expected = 60;
+    expect(actual).toEqual(expected);
+  });
+
+  it("example 4", () => {
+    const largeSphere = {
+      type: "sphere",
+      radius: 40
+    };
+
+    const smallSphere = {
+      type: "sphere",
+      radius: 10
+    };
+
+    const cone = {
+      type: "cone",
+      radius: 3,
+      height: 5
+    };
+
+    const duck = [largeSphere, smallSphere, cone];
+
+    const actual = totalVolume(duck);
+    const expected = 272318.2571833333;
+    expect(actual).toEqual(expected);
+  });
+
+  it("example 5", () => {
+    const prism = {
+      type: "prism",
+      height: 5,
+      width: 6,
+      depth: 3
+    };
+
+    const cone = {
+      type: "cone",
+      radius: 3,
+      height: 6
+    };
+
+    const castle = [cone, prism];
+
+    const actual = totalVolume(castle);
+    const expected = 146.54862;
     expect(actual).toEqual(expected);
   });
 });
