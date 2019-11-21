@@ -24,7 +24,8 @@ const {
   sphereVolume,
   coneVolume,
   prismVolume,
-  totalVolume
+  totalVolume,
+  chooseRecipe
 } = require("./app");
 
 describe("Challenge 01", () => {
@@ -780,6 +781,56 @@ describe("Challenge 20", () => {
 
     const actual = totalVolume(castle);
     const expected = 146.54862;
+    expect(actual).toEqual(expected);
+  });
+});
+
+describe("Challenge 21", () => {
+  it("example 1", () => {
+    const bakeryA = ["saffron", "eggs", "tomato paste", "coconut", "custard"];
+    const bakeryB = ["milk", "butter", "cream cheese"];
+
+    const recipes = [
+      {
+        name: "Coconut Sponge Cake",
+        ingredients: ["coconut", "cake base"]
+      },
+      {
+        name: "Persian Cheesecake",
+        ingredients: ["saffron", "cream cheese"]
+      },
+      {
+        name: "Custard Surprise",
+        ingredients: ["custard", "ground beef"]
+      }
+    ];
+
+    const actual = chooseRecipe(bakeryA, bakeryB, recipes);
+    const expected = "Persian Cheesecake";
+    expect(actual).toEqual(expected);
+  });
+
+  it("example 2", () => {
+    const bakeryA = ["potatoes", "bay leaf", "raisins"];
+    const bakeryB = ["red bean", "dijon mustard", "apples"];
+
+    const recipes = [
+      {
+        name: "Potato Ganache",
+        ingredients: ["potatoes", "chocolate"]
+      },
+      {
+        name: "Sweet Fish",
+        ingredients: ["anchovies", "honey"]
+      },
+      {
+        name: "Nima's Famous Dijon Raisins",
+        ingredients: ["dijon mustard", "raisins"]
+      }
+    ];
+
+    const actual = chooseRecipe(bakeryA, bakeryB, recipes);
+    const expected = "Nima's Famous Dijon Raisins";
     expect(actual).toEqual(expected);
   });
 });

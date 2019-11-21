@@ -224,6 +224,13 @@ const totalVolume = solids =>
     })
     .reduce((a, b) => a + b, 0);
 
+const chooseRecipe = (bakeryA, bakeryB, recipes) =>
+  recipes.find(
+    ({ ingredients }) =>
+      (bakeryA.includes(ingredients[0]) && bakeryB.includes(ingredients[1])) ||
+      (bakeryA.includes(ingredients[1]) && bakeryB.includes(ingredients[0]))
+  ).name;
+
 module.exports = {
   doorToDoor,
   interviewAnswer,
@@ -250,5 +257,6 @@ module.exports = {
   sphereVolume,
   coneVolume,
   prismVolume,
-  totalVolume
+  totalVolume,
+  chooseRecipe
 };
